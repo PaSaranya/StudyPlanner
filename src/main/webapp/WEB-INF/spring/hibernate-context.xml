@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	">
+
+	<!-- Hibernate DAO configuration.
+	Use DriverManagerDataSource for testing only. In a J2EE container use a JNDI DataSource provided by the container -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jstudyplanner"/>
+        <property name="username" value="jstudyplanner"/>
+        <property name="password" value="myPassword"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>mapping.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!-- Hibernate DAO objects -->
+	<bean id="campusDAO" class="com.jstudyplanner.dao.hibernate.HibernateCampusDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userDAO" class="com.jstudyplanner.dao.hibernate.HibernateUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="courseDAO" class="com.jstudyplanner.dao.hibernate.HibernateCourseDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="majorDAO" class="com.jstudyplanner.dao.hibernate.HibernateMajorDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="programDAO" class="com.jstudyplanner.dao.hibernate.HibernateProgramDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="termDAO" class="com.jstudyplanner.dao.hibernate.HibernateTermDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="courseAvailabilityDAO" class="com.jstudyplanner.dao.hibernate.HibernateCourseAvailabilityDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="enrollmentDAO" class="com.jstudyplanner.dao.hibernate.HibernateEnrollmentDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

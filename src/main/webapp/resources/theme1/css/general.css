@@ -1,0 +1,106 @@
+@CHARSET "UTF-8";
+
+.italic {font-style: italic;}
+
+.font08 {font-size: 0.8em;}
+.font09 {font-size: 0.9em;}
+.font11 {font-size: 1.1em;}
+.font12 {font-size: 1.2em;}
+.font13 {font-size: 1.3em;}
+.font14 {font-size: 1.4em;}
+
+/* Margins --------------- */
+.top5 {	margin-top: 5px;}
+.top10 {margin-top: 10px;}
+.top15 {margin-top: 15px;}
+.top20 {margin-top: 20px;}
+.top25 {margin-top: 25px;}
+.top30 {margin-top: 30px;}
+.top40 {margin-top: 40px;}
+.top50 {margin-top: 50px;}
+.top60 {margin-top: 60px;}
+
+.bottom5 {margin-bottom: 5px;}
+.bottom10 {margin-bottom: 10px;}
+.bottom15 {margin-bottom: 15px;}
+.bottom20 {margin-bottom: 20px;}
+.bottom25 {margin-bottom: 25px;}
+.bottom30 {margin-bottom: 30px;}
+.bottom40 {margin-bottom: 40px;}
+.bottom50 {margin-bottom: 50px;}
+.bottom60 {margin-bottom: 60px;}
+
+.left5 {margin-left: 5px;}
+.left10 {margin-left: 10px;}
+.left15 {margin-left: 15px;}
+.left20 {margin-left: 20px;}
+.left25 {margin-left: 25px;}
+.left30 {margin-left: 30px;}
+.left40 {margin-left: 40px;}
+.left50 {margin-left: 50px;}
+.left60 {margin-left: 60px;}
+
+.right5 {margin-right: 5px;}
+.right10 {margin-right: 10px;}
+.right15 {margin-right: 15px;}
+.right20 {margin-right: 20px;}
+.right25 {margin-right: 25px;}
+.right30 {margin-right: 30px;}
+.right40 {margin-right: 40px;}
+.right50 {margin-right: 50px;}
+.right60 {margin-right: 60px;}
+
+.sidebar {}
+
+.localeDropDown {
+	width: 100%;
+	min-width: 80px;
+	text-align: right;
+}
+
+
+/* Fix drop down list padding issue in forms */
+.has-feedback select.form-control {
+	padding-right: 5px;
+}
+.has-feedback select.form-control option {
+	padding:5px;
+}
+
+
+
+/* Callouts from the bootstrap documentation ------ */
+/* Base styles (regardless of theme) */
+.bs-callout {
+	margin: 20px 0;
+	padding: 15px 30px 15px 15px;
+	border-left: 5px solid #eee;
+}
+
+.bs-callout h4 {
+	margin-top: 0;
+}
+
+.bs-callout p:last-child {
+	margin-bottom: 0;
+}
+
+.bs-callout code,.bs-callout .highlight {
+	background-color: #fff;
+}
+
+/* Themes for different contexts ------------------ */
+.bs-callout-danger {
+	background-color: #fcf2f2;
+	border-color: #dFb5b4;
+}
+
+.bs-callout-warning {
+	background-color: #fefbed;
+	border-color: #f1e7bc;
+}
+
+.bs-callout-info {
+	background-color: #f0f7fd;
+	border-color: #d0e3f0;
+}

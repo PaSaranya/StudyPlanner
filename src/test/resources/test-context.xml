@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	">
+	
+	<!-- This XML defines beans for testing -->
+	
+	<!-- Courses  -->
+	<bean id="programmingFoundation" class="com.jstudyplanner.domain.Course">
+		<property name="id" value="3" />
+		<property name="code" value="CIT651" />
+		<property name="title" value="Programming Foundation" />
+		<property name="enabled" value="1" />
+		<property name="description" value="Aliquam suscipit egestas risus, in vestibulum ligula luctus id. Integer." />
+		<property name="prerequisites"><null/></property>
+	</bean>
+	
+	<bean id="webDevelopment" class="com.jstudyplanner.domain.Course">
+		<property name="id" value="2" />
+		<property name="code" value="CIT2187" />
+		<property name="title" value="Web development" />
+		<property name="enabled" value="1" />
+		<property name="description" value="scelerisque mauris vel" />
+		<property name="prerequisites"><null/></property>
+	</bean>
+	
+	<bean id="enterpriseSystems" class="com.jstudyplanner.domain.Course">
+		<property name="id" value="1" />
+		<property name="code" value="CIT2947" />
+		<property name="title" value="Enterprise Systems" />
+		<property name="enabled" value="1" />
+		<property name="description" value="Nunc quis mauris viverra, scelerisque mauris vel, convallis ante. Curabitur tempus lacus diam. Duis viverra tempor lorem nec venenatis. Nunc ut fermentum libero, ut fermentum nibh. Proin ac ullamcorper justo. Praesent urna lacus, mattis ut massa ac, eleifend bibendum leo. Nunc fermentum aliquam mollis." />
+		<property name="prerequisites">
+			<set>
+				<ref bean="programmingFoundation" />
+				<ref bean="webDevelopment" />
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="businessAnalysis" class="com.jstudyplanner.domain.Course">
+		<property name="id" value="4" />
+		<property name="code" value="CIS9514" />
+		<property name="title" value="Business Analysis" />
+		<property name="enabled" value="1" />
+		<property name="description" value="scelerisque mauris vel" />
+		<property name="prerequisites"><null/></property>
+	</bean>
+	
+	<bean id="dataAnalysis" class="com.jstudyplanner.domain.Course">
+		<property name="id" value="5" />
+		<property name="code" value="CIS1954" />
+		<property name="title" value="Data Analysis" />
+		<property name="enabled" value="0" />
+		<property name="description" value="Curabitur luctus sem ut vestibulum porta." />
+		<property name="prerequisites">
+			<set>
+				<ref bean="businessAnalysis" />
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="databaseDevelopment" class="com.jstudyplanner.domain.Course">
+		<property name="id" value="6" />
+		<property name="code" value="CIT119" />
+		<property name="title" value="Database Development" />
+		<property name="enabled" value="1" />
+		<property name="description" value="Nullam justo lectus, semper nec vulputate vitae, lacinia vitae ligula. Cras eu mauris porta, pharetra tellus eget, sodales magna. Suspendisse consectetur, ipsum vitae tincidunt feugiat, enim nibh dictum lorem, pretium pretium felis metus ut odio. Vivamus laoreet lacinia est, quis tristique tellus ornare ac. Nullam tempus lectus est, at suscipit lorem luctus quis." />
+		<property name="prerequisites"><null/></property>
+	</bean>
+	
+	
+	<!-- Programs -->
+	<bean id="bachelorOfIT" class="com.jstudyplanner.domain.Program">
+		<property name="id" value="2" />
+		<property name="code" value="BIT" />
+		<property name="title" value="Bachelor of IT" />
+		<property name="enabled" value="1" />
+		<property name="description" value="Pellentesque bibendum turpis turpis, sed feugiat metus feugiat in." />
+		<property name="career" value="undergraduate" />
+		<property name="numberOfCourses" value="18" />
+		<property name="coreCourses">
+			<set>
+				<ref bean="programmingFoundation" />
+				<ref bean="databaseDevelopment" />
+			</set>
+		</property>
+		<property name="electiveCourses">
+			<set>
+				<ref bean="businessAnalysis" />
+			</set>
+		</property>
+	</bean>
+	
+	<!-- Majors -->
+	<bean id="softwareDevelopment" class="com.jstudyplanner.domain.Major">
+		<property name="id" value="7" />
+		<property name="code" value="SD" />
+		<property name="title" value="Software Development" />
+		<property name="enabled" value="1" />
+		<property name="description" value="Donec et ante a dui tempus bibendum quis ac nulla. Sed id augue eu massa blandit tempor." />
+		<property name="program" ref="bachelorOfIT" />
+		<property name="compulsoryCourses">
+			<set>
+				<ref bean="webDevelopment" />
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="informationSystems" class="com.jstudyplanner.domain.Major">
+		<property name="id" value="17" />
+		<property name="code" value="I" />
+		<property name="title" value="Information Systems" />
+		<property name="enabled" value="1" />
+		<property name="description" value="No description available." />
+		<property name="program" ref="bachelorOfIT" />
+		<property name="compulsoryCourses">
+			<set>
+				<ref bean="businessAnalysis" />
+				<ref bean="dataAnalysis" />
+			</set>
+		</property>
+	</bean>
+	
+	
+	<!-- Campuses -->
+	<bean id="ipswich" class="com.jstudyplanner.domain.Campus">
+		<property name="id" value="1" />
+		<property name="code" value="IPS" />
+		<property name="title" value="Ipswich" />
+		<property name="enabled" value="1" />
+		<property name="address" value="199 Church St" />
+		<property name="phone" value="+61 7 6218 9544" />
+		<property name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut velit eu metus aliquam adipiscing. Sed eleifend gravida urna, sit amet hendrerit augue condimentum venenatis. In eget cursus lectus, vitae porttitor est. Nam suscipit elit ac nisl euismod pellentesque. Vivamus id pretium dolor, non fermentum nisl. In eget eros dictum, posuere odio vitae, vestibulum lectus. Donec porta aliquam mauris." />
+	</bean>
+	
+	<bean id="newcastle" class="com.jstudyplanner.domain.Campus">
+		<property name="id" value="1" />
+		<property name="code" value="NCL" />
+		<property name="title" value="Newcastle" />
+		<property name="enabled" value="1" />
+		<property name="address" value="694 Perry St" />
+		<property name="phone" value="751622148" />
+		<property name="description" value="Nullam pharetra luctus sodales. Praesent tincidunt commodo tempor. Nam rutrum ante sit amet libero egestas, in molestie arcu ornare. Proin mi lorem, pulvinar et urna volutpat, eleifend tincidunt quam. " />
+	</bean>
+	
+	
+	<!-- Terms -->
+	<bean id="term1_2012" class="com.jstudyplanner.domain.Term">
+		<property name="id" value="1" />
+		<property name="year" value="2012" />
+		<property name="number" value="1" />
+		<property name="startDate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1330166241" /> <!-- 25 Feb 2012 10:37:21 GMT -->
+			</bean>
+		</property>
+		<property name="finishDate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1338979041" /> <!-- 06 Jun 2012 10:37:21 GMT -->
+			</bean>
+		</property>
+		<property name="enabled" value="1" />
+	</bean>
+	
+	<bean id="term2_2012" class="com.jstudyplanner.domain.Term">
+		<property name="id" value="2" />
+		<property name="year" value="2012" />
+		<property name="number" value="2" />
+		<property name="startDate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1341398241" /> <!-- 04 Jul 2012 10:37:21 GMT -->
+			</bean>
+		</property>
+		<property name="finishDate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1350383841" /> <!-- 16 Oct 2012 10:37:21 GMT -->
+			</bean>
+		</property>
+		<property name="enabled" value="1" />
+	</bean>
+	
+	<bean id="term1_2013" class="com.jstudyplanner.domain.Term">
+		<property name="id" value="3" />
+		<property name="year" value="2013" />
+		<property name="number" value="1" />
+		<property name="startDate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1361702241" /> <!-- 24 Feb 2013 10:37:21 GMT -->
+			</bean>
+		</property>
+		<property name="finishDate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1370169441" /> <!-- 02 Jun 2013 10:37:21 GMT -->
+			</bean>
+		</property>
+		<property name="enabled" value="0" />
+	</bean>
+	
+	
+	<!-- Course availability -->
+	<bean id="programmingFoundation_ipswich_term1_2012" class="com.jstudyplanner.domain.CourseAvailability">
+		<property name="id" value="1" />
+		<property name="term" ref="term1_2012" />
+		<property name="course" ref="programmingFoundation" />
+		<property name="campus" ref="ipswich" />
+		<property name="enabled" value="1" />
+	</bean>
+	
+	<bean id="programmingFoundation_ipswich_term2_2012" class="com.jstudyplanner.domain.CourseAvailability">
+		<property name="id" value="2" />
+		<property name="term" ref="term2_2012" />
+		<property name="course" ref="programmingFoundation" />
+		<property name="campus" ref="ipswich" />
+		<property name="enabled" value="1" />
+	</bean>
+	
+	<bean id="programmingFoundation_newcastle_term1_2012" class="com.jstudyplanner.domain.CourseAvailability">
+		<property name="id" value="3" />
+		<property name="term" ref="term1_2012" />
+		<property name="course" ref="programmingFoundation" />
+		<property name="campus" ref="newcastle" />
+		<property name="enabled" value="1" />
+	</bean>
+	
+	<bean id="webDevelopment_newcastle_term1_2012" class="com.jstudyplanner.domain.CourseAvailability">
+		<property name="id" value="4" />
+		<property name="term" ref="term1_2012" />
+		<property name="course" ref="webDevelopment" />
+		<property name="campus" ref="newcastle" />
+		<property name="enabled" value="0" />
+	</bean>
+	
+	
+	<!-- Users -->
+	<bean id="admin" class="com.jstudyplanner.domain.Admin">
+		<property name="id" value="2" />
+		<property name="email" value="test.admin@jstudyplanner.com" />
+		<property name="username" value="test.admin" />
+		<property name="password" value="admin1!" />
+		<property name="enabled" value="1" />
+		<property name="firstName" value="Rob" />
+		<property name="lastName" value="Smith" />
+		<property name="phone" value="748951324" />
+	</bean>
+	
+	<bean id="staff" class="com.jstudyplanner.domain.Staff">
+		<property name="id" value="3" />
+		<property name="email" value="alexander.stir@jstudyplanner.com" />
+		<property name="username" value="alexander.stir" />
+		<property name="password" value="staff1!" />
+		<property name="enabled" value="1" />
+		<property name="firstName" value="Alexander" />
+		<property name="lastName" value="Stir" />
+		<property name="phone" value="+61489651112" />
+		<property name="managedCampuses">
+			<set>
+				<ref bean="ipswich" />
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="student" class="com.jstudyplanner.domain.Student">
+		<property name="id" value="4" />
+		<property name="email" value="mary.fouling@jstudyplanner.com" />
+		<property name="username" value="mary.fouling" />
+		<property name="password" value="pass2@" />
+		<property name="enabled" value="1" />
+		<property name="firstName" value="Mary" />
+		<property name="lastName" value="Fouling" />
+		<property name="phone" value="+614894884126" />
+		<property name="type" value="domestic" />
+		<property name="major" ref="softwareDevelopment" />
+		<property name="campus" ref="ipswich" />
+	</bean>
+	
+	
+	<!-- Enrollment -->
+	<bean id="enrollment1" class="com.jstudyplanner.domain.Enrollment">
+		<property name="id" value="1" />
+		<property name="courseAvailability" ref="webDevelopment_newcastle_term1_2012" />
+		<property name="student" ref="student" />
+		<property name="status" value="planned" />
+	</bean>
+	
+	<bean id="enrollment2" class="com.jstudyplanner.domain.Enrollment">
+		<property name="id" value="2" />
+		<property name="courseAvailability" ref="programmingFoundation_newcastle_term1_2012" />
+		<property name="student" ref="student" />
+		<property name="status" value="enrolled" />
+	</bean>
+	
+	
+	
+	
+	<!-- Hibernate DAO configuration.
+	Use DriverManagerDataSource for testing only. In a J2EE container use a JNDI DataSource provided by the container -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3307/jstudyplanner"/>
+        <property name="username" value="user"/>
+        <property name="password" value="myPassword"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>mapping.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="campusDAO" class="com.jstudyplanner.dao.hibernate.HibernateCampusDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userDAO" class="com.jstudyplanner.dao.hibernate.HibernateUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="courseDAO" class="com.jstudyplanner.dao.hibernate.HibernateCourseDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="majorDAO" class="com.jstudyplanner.dao.hibernate.HibernateMajorDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="programDAO" class="com.jstudyplanner.dao.hibernate.HibernateProgramDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="termDAO" class="com.jstudyplanner.dao.hibernate.HibernateTermDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="courseAvailabilityDAO" class="com.jstudyplanner.dao.hibernate.HibernateCourseAvailabilityDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="enrollmentDAO" class="com.jstudyplanner.dao.hibernate.HibernateEnrollmentDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>
