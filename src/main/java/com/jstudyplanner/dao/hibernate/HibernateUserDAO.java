@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,7 @@ import com.jstudyplanner.domain.User;
  * transaction. get* methods correspond to readOnly transactions.
  * @author oleg
  */
+@Repository
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 public class HibernateUserDAO implements UserDAO {
 	

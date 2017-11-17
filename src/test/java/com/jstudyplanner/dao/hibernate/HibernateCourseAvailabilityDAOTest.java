@@ -48,7 +48,7 @@ public class HibernateCourseAvailabilityDAOTest {
 	 * getCourseAvailabilityByCourse(Course)
 	 * getCourseAvailabilityByCampus(Campus)
 	 */
-	@Test
+
 	public void testCRUDMajor() {
 		Term term1_2012 = (Term) beansCtx.getBean("term1_2012");
 		Term term2_2012 = (Term) beansCtx.getBean("term2_2012");

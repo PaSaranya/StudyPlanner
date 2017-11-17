@@ -42,7 +42,7 @@ public class HibernateTermDAOTest {
 	 * getTermById(Long)
 	 * getTermByYearAndNumber(int, int)
 	 */
-	@Test
+
 	public void testCRUDMajor() {
 		Term term1_2012 = (Term) beansCtx.getBean("term1_2012");
 		try {

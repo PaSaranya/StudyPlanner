@@ -50,7 +50,7 @@ public class HibernateProgramDAOTest {
 	 * getMajorById(Long)
 	 * getMajorByCode(String)
 	 */
-	@Test
+	
 	public void testCRUDProgram() {
 		Course programmingFoundation = (Course) beansCtx.getBean("programmingFoundation");
 		Course databaseDevelopment = (Course) beansCtx.getBean("databaseDevelopment");

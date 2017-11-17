@@ -43,7 +43,7 @@ public class HibernateCampusDAOTest {
 	 * delete(Campus)
 	 * delete(Long)
 	 */
-	@Test
+	
 	public void testAddGetDeleteCampus() {
 		Campus ipswich = (Campus) beansCtx.getBean("ipswich");
 		try {
@@ -68,7 +68,7 @@ public class HibernateCampusDAOTest {
 		assertNull(ipswichFromDB); // campus should be deleted
 	}
 	
-	@Test
+
 	public void testSaveCampus() {
 		Campus ipswich = (Campus) beansCtx.getBean("ipswich");
 		ipswich.setId(null);

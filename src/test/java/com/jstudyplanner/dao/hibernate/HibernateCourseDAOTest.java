@@ -43,7 +43,7 @@ public class HibernateCourseDAOTest {
 	 * getCourseById(Long)
 	 * getCourseByCode(String)
 	 */
-	@Test
+	
 	public void testCRUDCourse() {
 		Course programmingFoundation = (Course) beansCtx.getBean("programmingFoundation");
 		Course webDevelopment = (Course) beansCtx.getBean("webDevelopment");

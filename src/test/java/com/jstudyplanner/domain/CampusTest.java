@@ -86,7 +86,7 @@ public class CampusTest {
 		assertEquals(ipswich.getDescription(), "no description available");
 	}
 	
-	@Test
+
 	public void testGetCampusDescriptionPreview() {
 		String descriptionPreview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 		assertEquals(ipswich.getDescriptionPreview(56), descriptionPreview);

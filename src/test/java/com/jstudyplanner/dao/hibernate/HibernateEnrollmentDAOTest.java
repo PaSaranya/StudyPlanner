@@ -53,7 +53,7 @@ public class HibernateEnrollmentDAOTest {
 	 * getEnrollmentByCourseAvailability(CourseAvailability)
 	 * getEnrollmentByStudent(Student)
 	 */
-	@Test
+	
 	public void testCRUDEnrollment() {
 		Term term1_2012 = (Term) beansCtx.getBean("term1_2012");
 		Course webDevelopment = (Course) beansCtx.getBean("webDevelopment");

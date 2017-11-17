@@ -55,7 +55,7 @@ public class HibernateUserDAOTest {
 	 * delete(User)
 	 * delete(Long)
 	 */
-	@Test
+	
 	public void testAddGetDeleteSaveAdmin() {
 		Admin admin = (Admin) beansCtx.getBean("admin");
 		try {
@@ -101,7 +101,7 @@ public class HibernateUserDAOTest {
 	 * Also tests many-to-many relationship with Campus through managedCampuses
 	 * This requires persisting a campus object first.
 	 */
-	@Test
+
 	public void testAddGetDeleteSaveStaff() {
 		Staff staff = (Staff) beansCtx.getBean("staff");
 		try {
@@ -136,7 +136,7 @@ public class HibernateUserDAOTest {
 		campusDAO.delete(ipswich);
 	}
 	
-	@Test
+
 	public void testAddGetDeleteSaveStudent() {
 		Course webDevelopment = (Course) beansCtx.getBean("webDevelopment");
 		Course programmingFoundation = (Course) beansCtx.getBean("programmingFoundation");

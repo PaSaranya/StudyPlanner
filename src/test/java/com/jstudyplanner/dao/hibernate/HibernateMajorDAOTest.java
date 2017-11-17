@@ -48,7 +48,7 @@ public class HibernateMajorDAOTest {
 	 * getMajorById(Long)
 	 * getMajorByCode(String)
 	 */
-	@Test
+	
 	public void testCRUDMajor() {
 		Course webDevelopment = (Course) beansCtx.getBean("webDevelopment");
 		Byte enabled = 1;
