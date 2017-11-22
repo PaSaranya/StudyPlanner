@@ -1,7 +1,20 @@
-security:
-  basic:
+--- 
+security: 
+  basic: 
     enabled: false
-server:
-  error:
+server: 
+  error: 
     whitelabel: 
-      enabled: false 
+      enabled: false
+  port: 8081
+spring: 
+  datasource: 
+    password: myPassword
+    url: "jdbc:mysql://localhost:3306/jstudyplanner?useSSL=false"
+    username: jstudyplanner
+  jpa: 
+    generate-ddl: true
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+  mvc.view: 
+    prefix: /WEB-INF/
+    suffix: .jsp

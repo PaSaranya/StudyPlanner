@@ -2,8 +2,13 @@ package com.jstudyplanner.dao.hibernate;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +29,15 @@ import com.jstudyplanner.domain.Campus;
 public class HibernateCampusDAO implements CampusDAO {
 	
 	// injection should be defined in the hibernate-context.xml
-	private SessionFactory sessionFactory;
+	//private SessionFactory sessionFactory;
 	
+	private SessionFactory sessionFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
+	    @Autowired
+	   public HibernateCampusDAO(SessionFactory sessionFactory) {
+	        this.sessionFactory=sessionFactory;
+	   }
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -106,13 +118,19 @@ public class HibernateCampusDAO implements CampusDAO {
 	
 	
 	public List<Campus> getAllCampuses() {
-		String hql = "FROM Campus c ORDER BY c.code";
-		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		
+		CriteriaQuery<Campus> cq = entityManager.getCriteriaBuilder().createQuery(Campus.class);
+        cq.select(cq.from(Campus.class));
+        return entityManager.createQuery(cq).getResultList();
+	//	System.out.println("sessionFactory===>"+sessionFactory);
+		//String hql = "FROM Campus c ORDER BY c.code";
+		// query = this.sessionFactory.getCurrentSession().createQuery(hql);
+		// query.list();
 	}
 	
 	
 	public List<Campus> getCampusesByStatus(boolean enabled) {
+		System.out.println("sessionFactory=================>"+sessionFactory);
 		// TODO add unit test for getAllCampusesByStatus()
 		String hql = "FROM Campus c WHERE c.enabled = :enabledCode ORDER BY c.code";
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);

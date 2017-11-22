@@ -2,17 +2,25 @@ package com.jstudyplanner.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 /**
  * Domain class that represents the Campus entity.
  * @author oleg, oleglukin@yahoo.com
  */
+
+@Entity
+@Table(name = "campus")
 public class Campus implements Serializable, DomainObject {
 	private static final long serialVersionUID = 1L;
 	
 	// ----------------------------------------
 	// Attributes
 	// ----------------------------------------
+	@Id
 	private Long id;
 	private String code;
 	private String title;

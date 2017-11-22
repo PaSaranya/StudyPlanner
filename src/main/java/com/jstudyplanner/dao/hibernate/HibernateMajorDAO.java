@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,7 @@ import com.jstudyplanner.domain.Program;
 public class HibernateMajorDAO implements MajorDAO {
 	
 	// injection should be defined in the hibernate-context.xml
+
 	private SessionFactory sessionFactory;
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)

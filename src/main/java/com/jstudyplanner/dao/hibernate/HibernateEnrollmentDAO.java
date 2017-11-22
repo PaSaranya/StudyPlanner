@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,7 @@ import com.jstudyplanner.domain.Student;
 public class HibernateEnrollmentDAO implements EnrollmentDAO {
 
 	// injection should be defined in the hibernate-context.xml
+	
 	private SessionFactory sessionFactory;
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
