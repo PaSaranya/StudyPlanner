@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -ex
-
+apt-get update && apt-get install -y maven
 pushd repo
   echo "Fetching Dependencies"
   mvn clean compile > /dev/null
