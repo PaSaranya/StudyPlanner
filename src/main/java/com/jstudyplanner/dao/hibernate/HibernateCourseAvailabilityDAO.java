@@ -2,6 +2,8 @@ package com.jstudyplanner.dao.hibernate;
 
 import java.util.List;
 
+import com.jstudyplanner.domain.*;
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -11,10 +13,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jstudyplanner.dao.CourseAvailabilityDAO;
-import com.jstudyplanner.domain.Campus;
-import com.jstudyplanner.domain.Course;
-import com.jstudyplanner.domain.CourseAvailability;
-import com.jstudyplanner.domain.Term;
 
 /**
  * Data Access Object that implements CourseAvailabilityDAO interface using Hibernate 
@@ -29,9 +27,10 @@ import com.jstudyplanner.domain.Term;
 public class HibernateCourseAvailabilityDAO implements CourseAvailabilityDAO {
 	
 	// injection should be defined in the hibernate-context.xml
-	
+
+@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -97,9 +96,11 @@ public class HibernateCourseAvailabilityDAO implements CourseAvailabilityDAO {
 	
 	public List<CourseAvailability> getAllCAs() {
 		// TODO add unit test for getAllCAs()
-		String hql = "FROM CourseAvailability ca ORDER BY ca.campus.title, ca.term.year, ca.term.number, ca.course.code";
+		Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(CourseAvailability.class);
+		return criteria.list();
+		/*String hql = "FROM CourseAvailability ca ORDER BY ca.campus.title, ca.term.year, ca.term.number, ca.course.code";
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		return query.list();*/
 	}
 	
 	

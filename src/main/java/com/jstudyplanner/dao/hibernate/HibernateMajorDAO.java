@@ -2,6 +2,8 @@ package com.jstudyplanner.dao.hibernate;
 
 import java.util.List;
 
+import com.jstudyplanner.domain.Student;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ import com.jstudyplanner.domain.Program;
 public class HibernateMajorDAO implements MajorDAO {
 	
 	// injection should be defined in the hibernate-context.xml
-
+@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
@@ -88,7 +90,8 @@ public class HibernateMajorDAO implements MajorDAO {
 		}
 	}
 	
-	
+
+
 	/**
 	 * Get a major identified by title and program. 
 	 * This method should be used to check major uniqueness.
@@ -115,9 +118,12 @@ public class HibernateMajorDAO implements MajorDAO {
 
 	
 	public List<Major> getAllMajors() {
-		String hql = "FROM Major m ORDER BY m.code";
+		/*String hql = "FROM Major m ORDER BY m.code";
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		return query.list();*/
+		Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Major.class);
+		return criteria.list();
+
 	}
 	
 }

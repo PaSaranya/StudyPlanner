@@ -26,6 +26,7 @@ public class HibernateTermDAO implements TermDAO {
 
 	// injection should be defined in the hibernate-context.xml
 
+@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)

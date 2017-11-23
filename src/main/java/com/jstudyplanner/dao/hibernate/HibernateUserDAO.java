@@ -28,6 +28,7 @@ public class HibernateUserDAO implements UserDAO {
 	
 	// injection should be defined in the hibernate-context.xml
 
+	
 	private SessionFactory sessionFactory;
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)

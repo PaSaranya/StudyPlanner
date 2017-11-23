@@ -30,14 +30,15 @@ public class HibernateCampusDAO implements CampusDAO {
 	
 	// injection should be defined in the hibernate-context.xml
 	//private SessionFactory sessionFactory;
-	
+
+	@Autowired
 	private SessionFactory sessionFactory;
     @PersistenceContext
     private EntityManager entityManager;
-	    @Autowired
+	  /*  @Autowired
 	   public HibernateCampusDAO(SessionFactory sessionFactory) {
 	        this.sessionFactory=sessionFactory;
-	   }
+	   }*/
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;

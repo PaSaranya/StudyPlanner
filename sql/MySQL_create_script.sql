@@ -1,15 +1,9 @@
 -- delimiter $$
 
--- Create database user
-CREATE USER `jstudyplanner`@`localhost` IDENTIFIED BY 'myPassword';
 
--- Create the database
-CREATE DATABASE IF NOT EXISTS `jstudyplanner`/*!40100 DEFAULT CHARACTER SET utf8 */;
 
--- Create account and grant permission. Make sure that you use the same credentials in your application settings.
-GRANT ALL ON `jstudyplanner`.* TO `jstudyplanner`@`localhost`;
 
-USE `jstudyplanner`;
+USE `cf_b47247b4_7f40_4e4f_be4b_7622d7874505`;
 
 -- Create tables ----------------------------
 -- campus

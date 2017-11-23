@@ -7,9 +7,9 @@ server:
     whitelabel: 
       enabled: false
   port: 8081
-spring: 
+spring:
   datasource: 
-    password: myPassword
+    password:
     url: "jdbc:mysql://localhost:3306/jstudyplanner?useSSL=false"
     username: jstudyplanner
   jpa: 

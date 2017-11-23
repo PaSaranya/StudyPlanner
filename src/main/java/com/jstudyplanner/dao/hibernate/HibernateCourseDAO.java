@@ -2,6 +2,8 @@ package com.jstudyplanner.dao.hibernate;
 
 import java.util.List;
 
+import com.jstudyplanner.domain.Student;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +27,9 @@ import com.jstudyplanner.domain.Course;
 public class HibernateCourseDAO implements CourseDAO {
 	
 	// injection should be defined in the hibernate-context.xml
-	
+@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -83,7 +85,8 @@ public class HibernateCourseDAO implements CourseDAO {
 		}
 	}
 	
-	
+
+
 	public Course getCourseByTitle(String title) {
 		String hql = "FROM Course c WHERE c.title = :title";
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
@@ -104,9 +107,9 @@ public class HibernateCourseDAO implements CourseDAO {
 
 	
 	public List<Course> getAllCourses() {
-		String hql = "FROM Course c ORDER BY c.title";
-		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		//String hql = "FROM Course c ORDER BY c.title";
+		Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Student.class);
+		return criteria.list();
 	}
 
 	
