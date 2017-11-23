@@ -33,8 +33,8 @@ public class HibernateCampusDAO implements CampusDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-    @PersistenceContext
-    private EntityManager entityManager;
+//    @PersistenceContext
+//    private EntityManager entityManager;
 	  /*  @Autowired
 	   public HibernateCampusDAO(SessionFactory sessionFactory) {
 	        this.sessionFactory=sessionFactory;
@@ -120,13 +120,13 @@ public class HibernateCampusDAO implements CampusDAO {
 	
 	public List<Campus> getAllCampuses() {
 		
-		CriteriaQuery<Campus> cq = entityManager.getCriteriaBuilder().createQuery(Campus.class);
-        cq.select(cq.from(Campus.class));
-        return entityManager.createQuery(cq).getResultList();
-	//	System.out.println("sessionFactory===>"+sessionFactory);
-		//String hql = "FROM Campus c ORDER BY c.code";
-		// query = this.sessionFactory.getCurrentSession().createQuery(hql);
-		// query.list();
+//		CriteriaQuery<Campus> cq = entityManager.getCriteriaBuilder().createQuery(Campus.class);
+//        cq.select(cq.from(Campus.class));
+//        return entityManager.createQuery(cq).getResultList();
+		System.out.println("sessionFactory===>"+sessionFactory);
+		String hql = "FROM Campus c ORDER BY c.code";
+		 Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
+		 return query.list();
 	}
 	
 	

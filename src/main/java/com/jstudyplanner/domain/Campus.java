@@ -12,15 +12,15 @@ import javax.persistence.Table;
  * @author oleg, oleglukin@yahoo.com
  */
 
-@Entity
-@Table(name = "campus")
+//@Entity
+//@Table(name = "campus")
 public class Campus implements Serializable, DomainObject {
 	private static final long serialVersionUID = 1L;
 	
 	// ----------------------------------------
 	// Attributes
 	// ----------------------------------------
-	@Id
+	//@Id
 	private Long id;
 	private String code;
 	private String title;

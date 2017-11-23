@@ -3,7 +3,7 @@
 
 
 
-USE `cf_b47247b4_7f40_4e4f_be4b_7622d7874505`;
+USE `jstudyplanner`;
 
 -- Create tables ----------------------------
 -- campus
