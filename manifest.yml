@@ -1,0 +1,6 @@
+application:
+- name: StudyPlanner
+  memory: 2G
+  instance: 1
+  services:
+  - album-database

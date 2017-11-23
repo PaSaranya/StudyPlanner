@@ -17,10 +17,19 @@ resources:
 
 
 jobs:
-- name: build
+- name: test
   public: true
   plan:
   - get: repo
+    trigger: true
+  - task: test
+    file: repo/ci/tasks/test.yml
+
+- name: deploy
+  public: true
+  plan:
+  - get: repo
+    trigger: true
   - task: package
     file: repo/ci/tasks/package.yml
   - put: deploy-Studyplanner
