@@ -3,7 +3,7 @@ resources:
 - name: repo
   type: git
   source:
-    uri: https://github.com/KrishnaRY/StudyPlanner.git
+    uri: https://github.com/PaSaranya/StudyPlanner.git
     branch: master
 
 - name: deploy-Studyplanner
