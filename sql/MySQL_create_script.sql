@@ -14,7 +14,7 @@ CREATE  TABLE IF NOT EXISTS `campus` (
   `enabled` TINYINT NOT NULL DEFAULT 0,
   `address` VARCHAR(255) NULL ,
   `phone` VARCHAR(255) NULL ,
-  `description` VARCHAR(4000) NULL ,
+  `description` VARCHAR(15000) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `code_UNIQUE` (`code` ASC) );
 
@@ -24,7 +24,7 @@ CREATE  TABLE IF NOT EXISTS `course` (
   `code` VARCHAR(45) NOT NULL ,
   `title` VARCHAR(255) NOT NULL ,
   `enabled` TINYINT NOT NULL DEFAULT 0 ,
-  `description` VARCHAR(4000) NULL ,
+  `description` VARCHAR(15000) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `code_UNIQUE` (`code` ASC) ,
   UNIQUE INDEX `title_UNIQUE` (`title` ASC) );
@@ -35,7 +35,7 @@ CREATE  TABLE IF NOT EXISTS `program` (
   `code` VARCHAR(45) NOT NULL ,
   `title` VARCHAR(255) NOT NULL ,
   `enabled` TINYINT NOT NULL DEFAULT 0,
-  `description` VARCHAR(4000) NULL ,
+  `description` VARCHAR(15000) NULL ,
   `career` VARCHAR(45) NULL ,
   `number_of_courses` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`id`) ,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `major` (
   `code` varchar(45) NOT NULL,
   `title` varchar(255) NOT NULL,
   `enabled` TINYINT NOT NULL DEFAULT 0,
-  `description` varchar(4000) DEFAULT NULL,
+  `description` varchar(15000) DEFAULT NULL,
   `program_fk` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code_UNIQUE` (`code`),

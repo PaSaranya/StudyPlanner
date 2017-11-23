@@ -1,5 +1,5 @@
 applications:
-- name: StudyPlanner
+- name: StudyPlanner-ps
   memory: 2G
   instance: 1
   services:
