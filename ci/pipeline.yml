@@ -1,0 +1,29 @@
+
+resources:
+- name: repo
+  type: git
+  source:
+    uri: https://github.com/KrishnaRY/StudyPlanner.git
+    branch: master
+
+- name: deploy-Studyplanner
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-user}}
+    password: {{cf-password}}
+    organization: {{cf-org}}    #<---- REPLACE ME
+    space: {{cf-space}}        #<---- REPLACE ME
+
+
+jobs:
+- name: build
+  public: true
+  plan:
+  - get: repo
+  - task: package
+    file: repo/ci/tasks/package.yml
+  - put: deploy-Studyplanner
+    params:
+      manifest: repo/manifest.yml
+      path: package-output/jStudyPlanner.war
