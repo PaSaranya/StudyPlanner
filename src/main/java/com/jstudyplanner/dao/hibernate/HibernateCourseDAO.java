@@ -107,9 +107,9 @@ public class HibernateCourseDAO implements CourseDAO {
 
 	
 	public List<Course> getAllCourses() {
-		//String hql = "FROM Course c ORDER BY c.title";
-		Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Student.class);
-		return criteria.list();
+		String hql = "FROM Course c ORDER BY c.title";
+		Query query  = this.sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();
 	}
 
 	
